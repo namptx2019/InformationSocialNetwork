@@ -1,0 +1,22 @@
+<div class="card" style="width: 20rem;">
+    <div class="card-body">
+        <h5 class="card-title">Top User Enthusiast</h5>
+        <div class="second d-flex flex-row mt-2 mb-3" *ngFor="let user of users">
+            <div class="image mr-3"> <img src="https://i.imgur.com/0LKZQYM.jpg" class="rounded-circle" width="60" /> </div>
+            <div class="">
+                <div class="d-flex flex-row mb-1"> <span>{{user.name}}</span>
+                    <div class="ratings ml-2"> 
+                        <fa-icon [icon]="faStar"></fa-icon>
+                        <fa-icon [icon]="faStar"></fa-icon>
+                        <fa-icon [icon]="faStar"></fa-icon>
+                        <fa-icon [icon]="faStar"></fa-icon>
+                        <fa-icon [icon]="faStar"></fa-icon>
+                    </div>
+                </div>
+                <div>
+                    <button class="btn btn-outline-dark btn-sm mr-2 px-2">See Topic</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
