@@ -9,6 +9,8 @@ import { UserManagerComponent } from './user-manager/user-manager.component';
 import { AdminManagerComponent } from './admin-manager/admin-manager.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { QuestionDetailComponent } from './question-detail/question-detail.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     TopRankComponent,
     UserManagerComponent,
     AdminManagerComponent,
-    MainPageComponent
+    MainPageComponent,
+    QuestionDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

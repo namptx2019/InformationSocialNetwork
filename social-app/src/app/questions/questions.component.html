@@ -1,11 +1,27 @@
-<div class="d-flex flex-row justify-content-between mt-5">
-    <h5 class="card-title">All questions</h5>
-    <a href="#" class="btn btn-primary">Ask Question</a>
-</div>
-<div class="media mb-5" *ngFor="let question of questions">
-    <img class="mr-3" style="width: 60px; height: 60px; border-radius: 50%;" [src]="question.userPic" alt="Generic placeholder image">
-    <div class="media-body" style="width: 100px;">
-        <h6 class="mt-0 mb-1">{{question.title}}</h6>
-        <p style="font-size: 12px;">{{question.content}}</p>
+<div style="height: 650px;">
+    <div class="d-flex flex-row justify-content-between mt-4">
+        <h5 class="card-title">All questions</h5>
+        <div class="row">
+            <select class="form-select" aria-label="Default select example" >
+                <option *ngFor="let option of filterOption" [value]="option.value">{{option.title}}</option>
+            </select>
+            <a href="#" class="btn btn-primary ml-2">Ask Question</a>
+        </div>
+    </div>
+    <div class="media mb-5" *ngFor="let question of questions">
+        <img class="mr-3" style="width: 60px; height: 60px; border-radius: 50%;" [src]="question.userPic" alt="Generic placeholder image">
+        <div class="media-body" style="width: 100px;">
+            <a class="mt-0 mb-1 card-link" routerLink="/detail"><b>{{question.title}}</b></a>
+            <p class="truncate" style="font-size: 12px;">{{question.content}}</p>
+        </div>
     </div>
 </div>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+</nav>

@@ -1,0 +1,12 @@
+.truncate {
+    width: 500px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-link {
+  cursor: pointer;
+  color: rgb(58, 58, 58);
+  font-family: "Helvetica Neue", sans-serif;
+}
