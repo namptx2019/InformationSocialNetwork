@@ -1,3 +1,4 @@
+import { UserService } from './shared/services/user.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -11,6 +12,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QuestionDetailComponent } from './question-detail/question-detail.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,15 +22,16 @@ import { QuestionDetailComponent } from './question-detail/question-detail.compo
     UserManagerComponent,
     AdminManagerComponent,
     MainPageComponent,
-    QuestionDetailComponent
+    QuestionDetailComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FontAwesomeModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
