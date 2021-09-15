@@ -102,7 +102,7 @@ namespace UserService.Controllers
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<User>> CreateUser(User user)
         {
             _context.Users.Add(user);
             try

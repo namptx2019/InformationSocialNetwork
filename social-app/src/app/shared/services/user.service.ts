@@ -41,4 +41,9 @@ export class UserService {
     const url = this.databaseUrl + 'api/Users' + `/${id}`;
     return this.http.put<User>(url, user, this.httpOptions);
   }
+
+  createUser(user: User): Observable<User> {
+    const url = this.databaseUrl + 'api/Users';
+    return this.http.post<User>(url, user, this.httpOptions);
+  }
 }
