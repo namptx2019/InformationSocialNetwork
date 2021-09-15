@@ -127,3 +127,4 @@ E:\personalProject\InformationNetwork\UserService\UserService\obj\Debug\net5.0\U
 E:\personalProject\InformationNetwork\UserService\UserService\obj\Debug\net5.0\ref\UserService.dll
 E:\personalProject\InformationNetwork\UserService\UserService\obj\Debug\net5.0\UserService.pdb
 E:\personalProject\InformationNetwork\UserService\UserService\obj\Debug\net5.0\UserService.genruntimeconfig.cache
+E:\personalProject\InformationNetwork\UserService\UserService\obj\Debug\net5.0\UserService.csprojAssemblyReference.cache

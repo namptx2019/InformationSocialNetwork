@@ -41,6 +41,33 @@ namespace UserService.Controllers
             return user;
         }
 
+        [HttpGet("login")]
+        public async Task<ActionResult<User>> LogInUser([FromQuery] string email, [FromQuery] string password)
+        {
+            var user = await _context.Users.Where(x => x.Email == email && x.Password == password).FirstOrDefaultAsync();
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            return user;
+        }
+
+        // GET: api/Users/topRank
+        [HttpGet("topRank")]
+        public async Task<ActionResult<IEnumerable<User>>> GetTopRank()
+        {
+            var users = await _context.Users.OrderByDescending(x => x.Rating).Take(3).ToListAsync();
+
+            if (users == null)
+            {
+                return NotFound();
+            }
+
+            return users;
+        }
+
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

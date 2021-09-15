@@ -13,6 +13,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QuestionDetailComponent } from './question-detail/question-detail.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { DataService } from './shared/services/data.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LogInComponent } from './log-in/log-in.component';
+import { RegisterComponent } from './register/register.component';
+import { AppResolver } from './app.resolver';
 
 @NgModule({
   declarations: [
@@ -23,15 +28,18 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     AdminManagerComponent,
     MainPageComponent,
     QuestionDetailComponent,
+    LogInComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FontAwesomeModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
-  providers: [UserService],
+  providers: [UserService, DataService, AppResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

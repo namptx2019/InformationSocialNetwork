@@ -6,6 +6,7 @@ export class User {
     phoneNumber: string;
     rating: number;
     isActive: boolean;
+    userPic: string;
     createdAt: Date;
     updateAt: Date;
 }

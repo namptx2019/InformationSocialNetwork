@@ -1,3 +1,5 @@
+import { DataService } from './../shared/services/data.service';
+import { UserService } from './../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
@@ -27,7 +29,7 @@ export class TopRankComponent implements OnInit {
   ];
 
   faStar = faStar;
-  constructor() { }
+  constructor(public dataService: DataService) { }
 
   ngOnInit(): void {
   }

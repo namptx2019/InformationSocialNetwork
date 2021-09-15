@@ -1,3 +1,5 @@
+import { DataService } from './shared/services/data.service';
+import { UserService } from './shared/services/user.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -11,4 +13,8 @@ export class AppComponent {
     userPic: 'https://bitly.com.vn/m4zfji',
   };
   title = 'social-app';
+
+  constructor(public dataService: DataService) {
+
+  }
 }
