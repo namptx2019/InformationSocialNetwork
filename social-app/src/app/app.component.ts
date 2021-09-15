@@ -1,6 +1,7 @@
 import { DataService } from './shared/services/data.service';
 import { UserService } from './shared/services/user.service';
 import { Component } from '@angular/core';
+import { User } from './shared/models/user.model';
 
 @Component({
   selector: 'app-root',
@@ -16,5 +17,10 @@ export class AppComponent {
 
   constructor(public dataService: DataService) {
 
+  }
+
+  logOut(): void {
+    this.dataService.user = new User();
+    this.dataService.isLogin = false;
   }
 }

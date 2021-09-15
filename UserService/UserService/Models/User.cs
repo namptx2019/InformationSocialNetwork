@@ -20,6 +20,7 @@ namespace UserService.Models
         public string PhoneNumber { get; set; }
         public int Rating { get; set; }
         public bool isActive { get; set; }
+        public bool isAdmin { get; set; }
         public string UserPic { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdateAt { get; set; }

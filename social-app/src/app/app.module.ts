@@ -18,6 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LogInComponent } from './log-in/log-in.component';
 import { RegisterComponent } from './register/register.component';
 import { AppResolver } from './app.resolver';
+import { UserListComponent } from './admin-manager/user-list/user-list.component';
+import { QuestionListComponent } from './admin-manager/question-list/question-list.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { AppResolver } from './app.resolver';
     QuestionDetailComponent,
     LogInComponent,
     RegisterComponent,
+    UserListComponent,
+    QuestionListComponent,
   ],
   imports: [
     BrowserModule,
