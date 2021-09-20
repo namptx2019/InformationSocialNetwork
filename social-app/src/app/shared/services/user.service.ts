@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { projectUrl } from 'src/app/config';
+import { userServiceUrl } from 'src/app/config';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user.model';
 import { Observable } from 'rxjs';
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  private databaseUrl = projectUrl;
+  private databaseUrl = userServiceUrl;
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -45,5 +45,10 @@ export class UserService {
   createUser(user: User): Observable<User> {
     const url = this.databaseUrl + 'api/Users';
     return this.http.post<User>(url, user, this.httpOptions);
+  }
+
+  deleteUser(id: number): Observable<any> {
+    const url = this.databaseUrl + 'api/Users' + `/${id}`;
+    return this.http.delete(url, this.httpOptions);
   }
 }

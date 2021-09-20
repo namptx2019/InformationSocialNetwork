@@ -36,6 +36,7 @@ export class RegisterComponent implements OnInit {
         password: this.registerControl.password.value,
         phoneNumber: this.registerControl.phoneNumber.value,
         createdAt: moment().toDate(),
+        isActive: true
       } as User;
 
       this.userService.createUser(user).subscribe(() => {

@@ -1,1 +1,34 @@
-<p>user-list works!</p>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">User Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Rating</th>
+        <th scope="col">Is Active</th>
+        <th scope="col">Is Admin</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let user of users">
+      <tr>
+        <th scope="row">{{user.userId}}</th>
+        <td>{{user.userName}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.phoneNumber}}</td>
+        <td>{{user.rating}}</td>
+        <td>{{user.isActive ? 'True' : 'False'}}</td>
+        <td>{{user.isAdmin ? 'True' : 'False'}}</td>
+        <td class="row">
+            <div>
+                <a class="btn btn-secondary" *ngIf="user.isActive" (click)="blockUser(user)">Block</a>
+                <a class="btn btn-primary" *ngIf="!user.isActive" (click)="blockUser(user)">Unblock</a>
+            </div>
+            <div class="ml-2">
+                <a class="btn btn-danger" (click)="deleteUser(user.userId)">Delete</a>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
