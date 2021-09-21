@@ -1,15 +1,14 @@
+import { service } from './../../config';
 import { Question } from './../models/question.model';
 import { Injectable } from '@angular/core';
-import { questionServiceUrl } from 'src/app/config';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from '../models/user.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuestionService {
-  private databaseUrl = questionServiceUrl;
+  private databaseUrl = service;
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

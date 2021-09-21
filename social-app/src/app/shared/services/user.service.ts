@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { userServiceUrl } from 'src/app/config';
+import { service } from 'src/app/config';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user.model';
 import { Observable } from 'rxjs';
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  private databaseUrl = userServiceUrl;
+  private databaseUrl = service;
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

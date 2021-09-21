@@ -16,7 +16,7 @@ export class AppComponent {
   title = 'social-app';
 
   constructor(public dataService: DataService) {
-
+    const a = this.dataService.user;
   }
 
   logOut(): void {
