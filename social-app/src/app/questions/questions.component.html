@@ -9,9 +9,9 @@
         </div>
     </div>
     <div class="media mb-5" *ngFor="let question of questions">
-        <img class="mr-3" style="width: 60px; height: 60px; border-radius: 50%;" [src]="question.userPic" alt="Generic placeholder image">
+        <img class="mr-3" style="width: 60px; height: 60px; border-radius: 50%;" [src]="question.creatorPic" alt="Generic placeholder image">
         <div class="media-body" style="width: 100px;">
-            <a class="mt-0 mb-1 card-link" routerLink="/detail"><b>{{question.title}}</b></a>
+            <a class="mt-0 mb-1 card-link" routerLink="/detail/{{question.questionId}}"><b>{{question.title}}</b></a>
             <p class="truncate" style="font-size: 12px;">{{question.content}}</p>
         </div>
     </div>

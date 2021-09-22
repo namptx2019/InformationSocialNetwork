@@ -25,17 +25,17 @@ export class QuestionService {
   }
 
   getQuestionDetail(id: number): Observable<Question>{
-    const url = this.databaseUrl + 'api/Users' + `/${id}`;
+    const url = this.databaseUrl + 'api/Questions' + `/${id}`;
     return this.http.get<Question>(url);
   }
 
   updateQuestion(id: number, question: Question): Observable<Question> {
-    const url = this.databaseUrl + 'api/Users' + `/${id}`;
+    const url = this.databaseUrl + 'api/Questions' + `/${id}`;
     return this.http.put<Question>(url, question, this.httpOptions);
   }
 
   createQuestion(question: Question): Observable<Question> {
-    const url = this.databaseUrl + 'api/Users';
+    const url = this.databaseUrl + 'api/Questions';
     return this.http.post<Question>(url, question, this.httpOptions);
   }
 
