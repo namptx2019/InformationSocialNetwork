@@ -3,6 +3,7 @@ import { Question } from './../models/question.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Category } from '../models/category.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,6 @@ export class QuestionService {
     private http: HttpClient,
   ) {
   }
-
 
   getAllQuestions(): Observable<Question[]>{
     return this.http.get<Question[]>(this.databaseUrl + 'api/questions');
@@ -42,5 +42,10 @@ export class QuestionService {
   deleteQuestion(id: number): Observable<Question> {
     const url = this.databaseUrl + 'api/questions' + `/${id}`;
     return this.http.delete<Question>(url, this.httpOptions);
+  }
+
+  getAllCategories(): Observable<Category[]> {
+    const url = this.databaseUrl + 'api/questions/categories';
+    return this.http.get<Category[]>(url);
   }
 }
