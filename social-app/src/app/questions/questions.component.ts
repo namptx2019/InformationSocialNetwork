@@ -5,6 +5,7 @@ import { QuestionService } from './../shared/services/question.service';
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../shared/models/category.model';
 import * as moment from 'moment';
+import { User } from '../shared/models/user.model';
 
 @Component({
   selector: 'app-questions',
@@ -12,6 +13,7 @@ import * as moment from 'moment';
   styleUrls: ['./questions.component.scss']
 })
 export class QuestionsComponent implements OnInit {
+  public user: User;
   public questions: Question[];
   public filterOption = [
     {
@@ -36,6 +38,9 @@ export class QuestionsComponent implements OnInit {
 
   constructor(public dataService: DataService, private questionService: QuestionService) {
     this.questionForm = new FormGroup(this.controls);
+    if (localStorage.getItem('currentUser')) {
+      this.user = JSON.parse(localStorage.getItem('currentUser') as any);
+    }
   }
 
   submitQuestion(): void {
@@ -44,7 +49,7 @@ export class QuestionsComponent implements OnInit {
       title: this.controls.title.value,
       content: this.controls.content.value,
       rating: 0,
-      creatorId: this.dataService.user.userId,
+      creatorId: this.user.userId,
       tag: 'math;text;constructor',
       createdAt:  moment().toDate()
     } as Question;

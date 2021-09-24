@@ -11,7 +11,6 @@ export class AppResolver implements Resolve<any> {
   constructor(private userService: UserService, private dataService: DataService, private questionService: QuestionService) {}
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
     return combineLatest([this.userService.getTopRank(), this.questionService.getAllCategories()]).pipe(tap(data => {
-        // this.dataService.user = data[0];
         this.dataService.topRank = data[0];
         this.dataService.categories = data[1];
     }));

@@ -1,3 +1,4 @@
+import { Answer } from './../models/answer.model';
 import { service } from './../../config';
 import { Question } from './../models/question.model';
 import { Injectable } from '@angular/core';
@@ -29,9 +30,24 @@ export class QuestionService {
     return this.http.get<Question>(url);
   }
 
+  getUserQuestions(id: number): Observable<Question[]>{
+    const url = this.databaseUrl + 'api/Questions/user' + `/${id}`;
+    return this.http.get<Question[]>(url);
+  }
+
   updateQuestion(id: number, question: Question): Observable<Question> {
     const url = this.databaseUrl + 'api/Questions' + `/${id}`;
     return this.http.put<Question>(url, question, this.httpOptions);
+  }
+
+  ratingQuestion(id: number, rating: number): Observable<Question> {
+    const url = this.databaseUrl + 'api/Questions/rating' + `/${id}`;
+    return this.http.post<Question>(url, rating, this.httpOptions);
+  }
+
+  ratingAnswer(id: number, rating: number): Observable<Question> {
+    const url = this.databaseUrl + 'api/Questions/answer' + `/${id}`;
+    return this.http.post<Question>(url, rating, this.httpOptions);
   }
 
   createQuestion(question: Question): Observable<Question> {
@@ -47,5 +63,10 @@ export class QuestionService {
   getAllCategories(): Observable<Category[]> {
     const url = this.databaseUrl + 'api/questions/categories';
     return this.http.get<Category[]>(url);
+  }
+
+  createAnswer(answer: Answer): Observable<Answer> {
+    const url = this.databaseUrl + 'api/questions/answer';
+    return this.http.post<Answer>(url, answer, this.httpOptions);
   }
 }

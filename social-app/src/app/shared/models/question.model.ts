@@ -1,3 +1,4 @@
+import { Answer } from './answer.model';
 export class Question {
     questionId: number;
     title: string;
@@ -12,4 +13,5 @@ export class Question {
     isAdmin: boolean;
     createdAt: Date;
     updateAt: Date;
+    answers: Answer[];
 }

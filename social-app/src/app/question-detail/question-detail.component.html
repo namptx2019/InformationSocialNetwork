@@ -1,31 +1,113 @@
 <div class="flex justify-content-center">
     <div class="media mt-5 flex justify-content-center">
-        <img class="mr-3" style="width: 60px; height: 60px; border-radius: 50%;" [src]="question.creatorPic" alt="Generic placeholder image">
+        <img class="mr-3" style="width: 60px; height: 60px; border-radius: 50%;" [src]="question?.creatorPic" alt="Generic placeholder image">
         <div class="w-50 mr-5">
-            <h6 class="mt-0 mb-1">{{question.title}}</h6>
-            <p class="truncate" style="font-size: 15px;">{{question.content}}</p>
-            <a class="card-link" style="cursor: pointer;">Vote</a>
-            <a class="card-link" style="cursor: pointer;">Answer</a>
+            <h6 class="mt-0 mb-1">{{question?.title}}</h6>
+            <p class="truncate" style="font-size: 15px;">{{question?.content}}</p>
+            <a class="card-link" *ngIf="user" style="cursor: pointer;" data-toggle="modal" data-target="#voteModal">Vote</a>
+            <a class="card-link" *ngIf="user" style="cursor: pointer;" data-toggle="modal" data-target="#answerModal">Answer</a>
+            <a class="card-link" *ngIf="!user" style="cursor: pointer;" routerLink="/login">Please login to vote or answer this question!</a>
         </div>
         <div class="card" style="width: 7rem;">
             <div class="card-body">
                 <h5 class="card-title">Rating</h5>
                 <div class="d-flex flex-row">
-                <h5>{{question.rating}}</h5><fa-icon class="ml-2" [icon]="faStar"></fa-icon>
+                <h5>{{question?.rating}}</h5><fa-icon class="ml-2" [icon]="faStar"></fa-icon>
                 </div>
             </div>
         </div>
     </div>
-    <div style="margin-left: 400px; margin-top: 50px;">
+    <div style="margin-left: 400px; margin-top: 50px; width: 50%">
         <div class="media" *ngFor="let answer of answers">
-            <img class="mr-3" style="width: 30px; height: 30px; border-radius: 50%;" [src]="answer.userPic" alt="Generic placeholder image">
-            <div class="media-body" style="width: 200px;">
-                <h6 class="mt-0 mb-1">{{answer.creatorName}}</h6>
-                <p style="font-size: 12px;">{{answer.content}}</p>
+            <img class="mr-3" style="width: 30px; height: 30px; border-radius: 50%;" [src]="answer.user.userPic" alt="Generic placeholder image">
+            <div class="media-body mb-1" style="width: 200px;">
+                <h6 class="mt-0 mb-1">{{answer.user.userName}}</h6>
+                <p class="mb-0" style="font-size: 12px;">{{answer.answerContent}}</p>
+                <a class="card-link" *ngIf="user" style="cursor: pointer; font-size: 15px;" data-toggle="modal" (click)="getAnswerId(answer.answerId)" data-target="#voteAnswerModal">Vote {{answer.rating}}</a>
             </div>
         </div>
     </div>
+</div>
 
+
+<div class="modal fade" id="voteModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Vote</h5>
+          <button type="button" id="closeRating" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="form">
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Your rating for this question:</label>
+                <select class="custom-select custom-select-lg mb-3" formControlName="vote">
+                    <option value="0" >Bad (0 point)</option>
+                    <option value="5" >Interesting (5point)</option>
+                    <option value="10">Very Good (10point)</option>
+                </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="submitRating()">Rating</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="voteAnswerModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Vote</h5>
+          <button type="button" id="closeAnswerRating" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="form">
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Your rating for this answer:</label>
+                <select class="custom-select custom-select-lg mb-3" formControlName="vote">
+                    <option value="0" >Bad (0 point)</option>
+                    <option value="5" >Interesting (5point)</option>
+                    <option value="10">Very Good (10point)</option>
+                </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="submitRatingAnswer()">Rating</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="answerModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Your Answer</h5>
+          <button type="button" id="closeAnswer" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="form">
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Message:</label>
+              <textarea class="form-control" id="message-text"  formControlName="answer"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="submitAnswer()">Send your answer</button>
+        </div>
+      </div>
+    </div>
 </div>
 
 

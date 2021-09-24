@@ -5,9 +5,9 @@
       <img src="../favicon.ico" width="30" height="30" alt="">
       Information Network
     </a>
-    <a routerLink="/admin" class="btn btn-primary ml-5" *ngIf="dataService.user && dataService.user.isAdmin">Admin Manager</a>
+    <a routerLink="/admin" class="btn btn-primary ml-5" *ngIf="user && user.isAdmin">Admin Manager</a>
     <div class="second d-flex flex-row mt-2">
-      <div *ngIf="dataService.isLogin">
+      <div *ngIf="user">
           <div class="d-flex flex-row align-items-baseline">
             <div class="image mr-3"> <img [src]="user.userPic" class="rounded-circle" width="40" /> </div>
             <span class="mr-3">{{user.name}}</span>
@@ -15,7 +15,7 @@
             <button class="btn btn-outline-dark btn-sm px-2 mr-3" (click)="logOut()">Log out</button>
           </div>
       </div>
-      <div *ngIf="!dataService.isLogin">
+      <div *ngIf="!user">
         <div class="d-flex flex-row align-items-baseline">
           <button class="btn btn-outline-dark btn-sm px-2 mr-3" routerLink="/login">Log-In</button>
           <button class="btn btn-outline-dark btn-sm px-2 mr-3" routerLink="/register">Register</button>

@@ -2,7 +2,7 @@
     <div class="card-body">
         <h5 class="card-title">Top User Enthusiast</h5>
         <div class="second d-flex flex-row mt-2 mb-3" *ngFor="let user of dataService.topRank">
-            <div class="image mr-3"> <img [src]="user.userPic" class="rounded-circle" width="60" /> </div>
+            <div class="image mr-3"> <img [src]="user.userPic" class="rounded-circle" width="60" height="60" /> </div>
             <div class="">
                 <div class="d-flex flex-row mb-1"> <span>{{user.userName}}</span>
                     <div class="ratings ml-2 d-flex"> 

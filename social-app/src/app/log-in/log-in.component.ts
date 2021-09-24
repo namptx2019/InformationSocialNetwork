@@ -27,9 +27,10 @@ export class LogInComponent implements OnInit {
     this.error = '';
     this.userService.logIn(this.loginForm.controls.email.value, this.loginForm.controls.password.value).subscribe((user) => {
       if (user) {
-        this.dataService.user = user;
-        this.dataService.isLogin = true;
-        this.router.navigate(['']);
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.router.navigate(['']).then(() => {
+          window.location.reload();
+        });
       } else {
         this.error = 'Email or password is wrong!';
       }

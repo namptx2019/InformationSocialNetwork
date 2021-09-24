@@ -27,6 +27,13 @@ namespace QuestionService.Controllers
             return await _context.Questions.ToListAsync();
         }
 
+        // GET: api/Questions
+        [HttpGet("user/{id}")]
+        public async Task<ActionResult<IEnumerable<Question>>> GetQuestionsByUserId(int id)
+        {
+            return await _context.Questions.Where(x => x.CreatorId == id).ToListAsync();
+        }
+
         // GET: api/Questions/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Question>> GetQuestion(int id)
